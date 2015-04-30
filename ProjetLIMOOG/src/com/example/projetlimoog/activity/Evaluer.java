@@ -97,18 +97,18 @@ import com.example.projetlimoog.model.Usager;
 //		listEvalFilter.add("Tri par moins réussies");
 		
 		ArrayAdapter<String> adapterEvalFilter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, listEvalFilter);
-		ListViewAdapter adapter1 = new ListViewAdapter(Evaluer.this);
-        actionBar.setListNavigationCallbacks(adapter1,
-                new OnNavigationListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(int itemPosition,
-                            long itemId) {
-                        Toast.makeText(Evaluer.this,
-                                "coucou", Toast.LENGTH_SHORT)
-                                .show();
-                        return false;
-                    }
-                });
+//		ListViewAdapter adapter1 = new ListViewAdapter(Evaluer.this);
+//        actionBar.setListNavigationCallbacks(adapter1,
+//                new OnNavigationListener() {
+//                    @Override
+//                    public boolean onNavigationItemSelected(int itemPosition,
+//                            long itemId) {
+//                        Toast.makeText(Evaluer.this,
+//                                "coucou", Toast.LENGTH_SHORT)
+//                                .show();
+//                        return false;
+//                    }
+//                });
 
 //		ArrayAdapter<String> adapterUserFilter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, listUserFilter);
 		
