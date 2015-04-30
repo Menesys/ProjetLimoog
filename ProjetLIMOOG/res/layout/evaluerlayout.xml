@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/myRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Spinner
+        android:id="@+id/selectEtudiant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="140dp"
+        android:layout_marginTop="50dp" />
+
+	    <ListView
+	        android:id="@+id/listeCompetence"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/enregistrerButton"
+	        android:layout_alignParentRight="true"
+	        android:layout_below="@+id/selectEtudiant"
+	        android:layout_marginTop="25dp" >
+
+	    </ListView>
+
+	    <TextView
+	        android:id="@+id/nomAndDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:gravity="center"
+	        android:text="TextView"
+	        android:textSize="16dp" />
+
+	    <Button
+	        android:id="@+id/enregistrerButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginBottom="16dp"
+	        android:layout_marginRight="46dp"
+	        android:text="Sauvegarder" />
+
+	    <Button
+	        android:id="@+id/backBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/enregistrerButton"
+	        android:layout_alignBottom="@+id/enregistrerButton"
+	        android:layout_alignLeft="@+id/selectEtudiant"
+	        android:layout_toLeftOf="@+id/enregistrerButton"
+	        android:text="Retour" />
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="302dp" >
+
+    <ListView
+        android:id="@+id/listEval"
+        android:layout_width="320dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/nouveauButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp" >
+
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/nouveauButton"
+        android:layout_width="146dp"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp"
+        android:src="@drawable/add_button" />
+
+    <Spinner
+        android:id="@+id/dateSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="18dp"
+        android:layout_toRightOf="@+id/nouveauButton" />
+
+    <Spinner
+        android:id="@+id/classeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/dateSpinner"
+        android:layout_toLeftOf="@+id/dateSpinner" />
+
+</RelativeLayout>
+</ScrollView>

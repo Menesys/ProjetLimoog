@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/evalName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/username"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="25dp"
+        android:text="Nom :" />
+
+    <TextView
+        android:id="@+id/evalClasse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/evalDate"
+        android:layout_below="@+id/evalDate"
+        android:layout_marginTop="32dp"
+        android:text="Classes :" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/evalName"
+        android:layout_alignBottom="@+id/evalName"
+        android:layout_toRightOf="@+id/evalClasse"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/evalDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/evalName"
+        android:layout_below="@+id/editTextName"
+        android:layout_marginTop="31dp"
+        android:text="Date" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/evalDate"
+        android:layout_alignBottom="@+id/evalDate"
+        android:layout_alignLeft="@+id/editTextName"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="User Name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/evalComp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/evalClasse"
+        android:layout_below="@+id/evalClasse"
+        android:layout_marginTop="16dp"
+        android:text="Compétences évaluées" />
+
+    <Button
+        android:id="@+id/saveButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Sauvegarder" />
+
+    <ListView
+        android:id="@+id/listEvalComp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_above="@+id/saveButton1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="29dp" >
+    </ListView>
+
+</RelativeLayout>

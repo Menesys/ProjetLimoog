@@ -1,0 +1,169 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+	<display-name>serveurLimoog</display-name>
+
+	<servlet>
+		<servlet-name>GetUsagerByIdServlet</servlet-name>
+		<display-name>GetUsagerByIdServlet</display-name>
+		<description></description>
+		<servlet-class>GetUsagerByIdServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AllCompServlet</servlet-name>
+		<display-name>AllCompServlet</display-name>
+		<description></description>
+		<servlet-class>AllCompServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AllUsagerServlet</servlet-name>
+		<display-name>AllUsagerServlet</display-name>
+		<description></description>
+		<servlet-class>AllUsagerServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AllEvalServlet</servlet-name>
+		<display-name>AllEvalServlet</display-name>
+		<description></description>
+		<servlet-class>AllEvalServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>LoginPasswordServlet</servlet-name>
+		<display-name>LoginPasswordServlet</display-name>
+		<description></description>
+		<servlet-class>LoginPasswordServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>DeleteEvalServlet</servlet-name>
+		<display-name>DeleteEvalServlet</display-name>
+		<description></description>
+		<servlet-class>DeleteEvalServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>GetNoteByCompEvalUserServlet</servlet-name>
+		<display-name>GetNoteByCompEvalUserServlet</display-name>
+		<description></description>
+		<servlet-class>GetNoteByCompEvalUserServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>GetUsagerByLoginServlet</servlet-name>
+		<display-name>GetUsagerByLoginServlet</display-name>
+		<description></description>
+		<servlet-class>GetUsagerByLoginServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>CreateEvaluationServlet</servlet-name>
+		<display-name>CreateEvaluationServlet</display-name>
+		<description></description>
+		<servlet-class>CreateEvaluationServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UpdateEvaluationServlet</servlet-name>
+		<display-name>UpdateEvaluationServlet</display-name>
+		<description></description>
+		<servlet-class>UpdateEvaluationServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>GetCompetenceByPersonneServlet</servlet-name>
+		<display-name>GetCompetenceByPersonneServlet</display-name>
+		<description></description>
+		<servlet-class>GetCompetenceByPersonneServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>GetMatiereByIdServlet</servlet-name>
+		<display-name>GetMatiereByIdServlet</display-name>
+		<description></description>
+		<servlet-class>GetMatiereByIdServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>GetCompetenceByEvaluationServlet</servlet-name>
+		<display-name>GetCompetenceByEvaluationServlet</display-name>
+		<description></description>
+		<servlet-class>GetCompetenceByEvaluationServlet</servlet-class>
+	</servlet>
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>GetUsagerByIdServlet</servlet-name>
+		<url-pattern>/GetUsagerById</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AllCompServlet</servlet-name>
+		<url-pattern>/AllComp</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AllUsagerServlet</servlet-name>
+		<url-pattern>/AllUsager</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AllEvalServlet</servlet-name>
+		<url-pattern>/AllEval</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoginPasswordServlet</servlet-name>
+		<url-pattern>/LoginPassword</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DeleteEvalServlet</servlet-name>
+		<url-pattern>/DeleteEval</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>GetNoteByCompEvalUserServlet</servlet-name>
+		<url-pattern>/GetNoteByCompEvalUser</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>GetUsagerByLoginServlet</servlet-name>
+		<url-pattern>/GetUsagerByLogin</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CreateEvaluationServlet</servlet-name>
+		<url-pattern>/CreateEvaluation</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UpdateEvaluationServlet</servlet-name>
+		<url-pattern>/UpdateEvaluation</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>GetCompetenceByPersonneServlet</servlet-name>
+		<url-pattern>/GetCompetenceByPersonne</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>GetMatiereByIdServlet</servlet-name>
+		<url-pattern>/GetMatiereById</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>GetCompetenceByEvaluationServlet</servlet-name>
+		<url-pattern>/GetCompetenceByEvaluation</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
