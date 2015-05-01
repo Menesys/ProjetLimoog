@@ -4,9 +4,9 @@ import java.util.concurrent.ExecutionException;
 
 public class Connection {
 	
-	//public final static String url="http://192.168.0.22:8080/test/"; 		//Appart
+	public final static String url="http://192.168.0.22:8080/test/"; 		//Appart
 	//public final static String url="http://192.168.43.111:8080/test/"; 	//Téléphone Lucas
-	public final static String url="http://192.168.200.1:8080/test/"; 		//ORT
+	//public final static String url="http://192.168.200.1:8080/test/"; 		//ORT
 
 	private static Connection connection = new Connection();
 

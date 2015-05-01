@@ -84,36 +84,25 @@ import com.example.projetlimoog.model.Usager;
 		
 		// Filtres ...
 		ArrayList<String> listEvalFilter = new ArrayList<String>();
+		listEvalFilter.add("Sans tri");
 		listEvalFilter.add("Tri alphabétique");
 		listEvalFilter.add("Tri par date");
 		listEvalFilter.add("Tri par moins évalués");
 		listEvalFilter.add("Tri par moins réussies");
-		
-//		ArrayList<String> listUserFilter = new ArrayList<String>();
-//		listEvalFilter.add("Tri apprenants...");
-//		listEvalFilter.add("Tri alphabétique");
-//		listEvalFilter.add("Tri par date");
-//		listEvalFilter.add("Tri par moins évalués");
-//		listEvalFilter.add("Tri par moins réussies");
-		
-		ArrayAdapter<String> adapterEvalFilter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, listEvalFilter);
-//		ListViewAdapter adapter1 = new ListViewAdapter(Evaluer.this);
-//        actionBar.setListNavigationCallbacks(adapter1,
-//                new OnNavigationListener() {
-//                    @Override
-//                    public boolean onNavigationItemSelected(int itemPosition,
-//                            long itemId) {
-//                        Toast.makeText(Evaluer.this,
-//                                "coucou", Toast.LENGTH_SHORT)
-//                                .show();
-//                        return false;
-//                    }
-//                });
 
-//		ArrayAdapter<String> adapterUserFilter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, listUserFilter);
-		
-		actionBar.setListNavigationCallbacks(adapterEvalFilter, this);
-//		actionBar.setListNavigationCallbacks(adapterUserFilter, this);
+	    // Specify a SpinnerAdapter to populate the dropdown list.
+	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listEvalFilter);
+
+	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+	    // Set up the dropdown list navigation in the action bar.
+	    actionBar.setListNavigationCallbacks(adapter, this);
+	    
+	    //Couleur du texte
+	    getActionBar().getThemedContext();
+	    
+	    
+	    
 		
 		nomAndDate = (TextView) findViewById(R.id.nomAndDate);
 		nomAndDate.setText(Html.fromHtml("<u>"+eval.getsNom()+" - "+eval.giveNiceDate()+"</u>"));
@@ -193,7 +182,14 @@ import com.example.projetlimoog.model.Usager;
 
 	@Override
 	public boolean onNavigationItemSelected(int arg0, long arg1) {
-		// TODO Auto-generated method stub
+		switch (arg0){
+		case 1 :
+			break;
+		case 2 :
+			break;
+		default :
+		}
+		Toast.makeText(Evaluer.this,"Coucou"+arg0, Toast.LENGTH_SHORT).show();
 		return false;
 	}
 }

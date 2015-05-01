@@ -14,6 +14,7 @@ import java.util.Collections;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,35 +28,43 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.projetlimoog.R;
 import com.example.projetlimoog.model.Current;
 import com.example.projetlimoog.model.Evaluation;
 
-public class PreparerEval extends Activity implements OnItemClickListener,
-		OnClickListener, OnItemLongClickListener, OnItemSelectedListener {
+@SuppressLint("NewApi") public class PreparerEval extends Activity implements OnItemClickListener,
+		OnClickListener, OnItemLongClickListener, OnItemSelectedListener, OnNavigationListener {
 
 	// éléments graphiques
 	ImageButton nouveauButton = null;
-	
+
 	ListView listViewEval = null;
-	
+
 	Spinner classeSpinner = null;
 	Spinner dateSpinner = null;
-	
+
 	// déclarations
 	int position;
-	ArrayList<Evaluation> listeEval = Evaluation.getAllEval(); 	// récupère la liste des évaluations dans la base de données
-//	ArrayAdapter<Groupe> adapterGroupe = null;
-//	List<Groupe> listeGroupe = new ArrayList<Groupe>();
-	CustomAdapterListeEval monadapter; 							//adapter de la liste des évaluation permettant d'afficher l'évaluation et la date
-	
-//	Groupe g = new Groupe(1,"test",2015);
-//	Groupe g2 = new Groupe(2,"testvvv", 2014);
-	
+	ArrayList<Evaluation> listeEval = Evaluation.getAllEval(); // récupère la
+																// liste des
+																// évaluations
+																// dans la base
+																// de données
+	// ArrayAdapter<Groupe> adapterGroupe = null;
+	// List<Groupe> listeGroupe = new ArrayList<Groupe>();
+	CustomAdapterListeEval monadapter; // adapter de la liste des évaluation
+										// permettant d'afficher l'évaluation et
+										// la date
+
+	// Groupe g = new Groupe(1,"test",2015);
+	// Groupe g2 = new Groupe(2,"testvvv", 2014);
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,81 +73,115 @@ public class PreparerEval extends Activity implements OnItemClickListener,
 		// éléments graphiques
 		nouveauButton = (ImageButton) findViewById(R.id.nouveauButton);
 		nouveauButton.setOnClickListener(this);
-		
+
 		listViewEval = (ListView) findViewById(R.id.listEval);
-		
-//		classeSpinner = (Spinner) findViewById(R.id.classeSpinner);
-//		classeSpinner.setOnItemClickListener(this);
-//
-//		dateSpinner = (Spinner) findViewById(R.id.dateSpinner);
-//		dateSpinner.setOnItemSelectedListener(this);
-//		
-//		listeGroupe.add(g);
-//		listeGroupe.add(g2);
-//
-//		adapterGroupe = new ArrayAdapter<Groupe>(this,android.R.layout.simple_spinner_item, listeGroupe);
-//		adapterGroupe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//		classeSpinner.setAdapter(adapterGroupe);
-		
+
+		// classeSpinner = (Spinner) findViewById(R.id.classeSpinner);
+		// classeSpinner.setOnItemClickListener(this);
+		//
+		// dateSpinner = (Spinner) findViewById(R.id.dateSpinner);
+		// dateSpinner.setOnItemSelectedListener(this);
+		//
+		// listeGroupe.add(g);
+		// listeGroupe.add(g2);
+		//
+		// adapterGroupe = new
+		// ArrayAdapter<Groupe>(this,android.R.layout.simple_spinner_item,
+		// listeGroupe);
+		// adapterGroupe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// classeSpinner.setAdapter(adapterGroupe);
 
 		Collections.sort(listeEval);
-		
+
 		monadapter = new CustomAdapterListeEval(listeEval, this);
-		
+
 		listViewEval.setAdapter(monadapter);
-		
+
 		// Clic court : modifier une évaluation
 		listViewEval.setOnItemClickListener(this);
 		// Clic long : supprimer une évaluation
 		listViewEval.setOnItemLongClickListener(this);
 	}
 
-	@SuppressLint("NewApi") @Override
+	@SuppressLint("NewApi")
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		ActionBar actionBar = getActionBar();
-		actionBar.setTitle("Préparer évaluation"); 
+		actionBar.setTitle("Préparer évaluation");
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+
+		// Filtres ...
+		ArrayList<String> listEvalFilter = new ArrayList<String>();
+		listEvalFilter.add("Sans tri");
+		listEvalFilter.add("Tri alphabétique");
+		listEvalFilter.add("Tri par date");
+		listEvalFilter.add("Tri par moins évalués");
+		listEvalFilter.add("Tri par moins réussies");
+
+		// Specify a SpinnerAdapter to populate the dropdown list.
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, android.R.id.text1,
+				listEvalFilter);
+
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		// Set up the dropdown list navigation in the action bar.
+		actionBar.setListNavigationCallbacks(adapter, this);
+
+		// Couleur du texte
+		getActionBar().getThemedContext();
+
 		return true;
 	}
 
 	@Override
-	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
-		
+	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos,
+			long arg3) {
+
 		// Clic long - supprimer une évaluation :
-		
+
 		position = pos;
-		
+
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
 		alertDialogBuilder.setTitle("Supprimer ?");
-		alertDialogBuilder.setMessage("Voulez-vous supprimer les choix séléctionés ?");
+		alertDialogBuilder
+				.setMessage("Voulez-vous supprimer les choix séléctionés ?");
 		alertDialogBuilder.setCancelable(true);
 
-		alertDialogBuilder.setNegativeButton("Non", new DialogInterface.OnClickListener() { //Annulation de la boîte de dialogue
+		alertDialogBuilder.setNegativeButton("Non",
+				new DialogInterface.OnClickListener() { // Annulation de la
+														// boîte de dialogue
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
-		});
-		alertDialogBuilder.setPositiveButton("Oui", new DialogInterface.OnClickListener() { // Suppression d'une evaluation
+				});
+		alertDialogBuilder.setPositiveButton("Oui",
+				new DialogInterface.OnClickListener() { // Suppression d'une
+														// evaluation
 					public void onClick(DialogInterface dialog, int id) {
-						Evaluation e = (Evaluation) listViewEval.getAdapter().getItem(position);
+						Evaluation e = (Evaluation) listViewEval.getAdapter()
+								.getItem(position);
 						int n = e.getiId();
 						Evaluation.deleteEval(n);
 					}
-		});
+				});
 
 		alertDialogBuilder.show();
 		return false;
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+	public void onItemClick(AdapterView<?> adapterView, View view, int pos,
+			long id) {
 
 		// Clic court - modifier une évaluation :
-		
+
 		Intent intent = new Intent(PreparerEval.this, AjouterModifier.class);
 		Current.setNouvelleEvaluation(false);
-		Current.setCurrentEvaluation((Evaluation) listViewEval.getAdapter().getItem(pos));
+		Current.setCurrentEvaluation((Evaluation) listViewEval.getAdapter()
+				.getItem(pos));
 
 		startActivity(intent);
 
@@ -148,7 +191,7 @@ public class PreparerEval extends Activity implements OnItemClickListener,
 	public void onClick(View v) {
 
 		// Créer une nouvelle évaluation (clic sur le bouton "nouveau") :
-		
+
 		switch (v.getId()) {
 		case R.id.nouveauButton:
 			Intent intent = new Intent(PreparerEval.this, AjouterModifier.class);
@@ -160,25 +203,49 @@ public class PreparerEval extends Activity implements OnItemClickListener,
 	}
 
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {}
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+	}
 
 	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {}
+	public void onNothingSelected(AdapterView<?> arg0) {
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	
-	switch (item.getItemId()) {
-//		case R.id.action_eval_filter:
-//		// Comportement du bouton settings
-//		return true;
-	
+
+		switch (item.getItemId()) {
+		// case R.id.action_eval_filter:
+		// // Comportement du bouton settings
+		// return true;
+
 		case R.id.action_refresh:
-		// Comportement du bouton "Rafraichir"
-		finish();
-		startActivity(getIntent());
-		return true;
+			// Comportement du bouton "Rafraichir"
+			finish();
+			startActivity(getIntent());
+			return true;
 		}
-	return false;
+		return false;
+	}
+
+	@Override
+	public boolean onNavigationItemSelected(int arg0, long arg1) {
+		switch (arg0){
+		case 0 :
+			Toast.makeText(PreparerEval.this,"sans tri "+arg0, Toast.LENGTH_SHORT).show();
+			break;
+		case 1 :
+			break;
+		case 2 :
+			break;
+		case 3 :
+			break;
+		case 4 :
+			break;
+		case 5 :
+			break;
+		default :
+		}
+		return false;
 	}
 }

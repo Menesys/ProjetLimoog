@@ -5,16 +5,5 @@
         android:icon="@drawable/ic_action_refresh"
         android:showAsAction="always"
         android:title="refresh"/>
-    
-<!--     <item -->
-<!--         android:id="@+id/action_user_filter" -->
-<!--         android:icon="@drawable/ic_action_user_filter" -->
-<!--         android:showAsAction="always" -->
-<!--         android:title="Tri des apprenants"/> -->
-<!--     <item -->
-<!--         android:id="@+id/action_eval_filter" -->
-<!--         android:icon="@drawable/ic_action_eval_filter" -->
-<!--         android:showAsAction="always" -->
-<!--         android:title="Tri des évaluations"/> -->
 
 </menu>
